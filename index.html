@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <main>
+    <form>
+        <label for="traduccion">Elije la traduccion</label>
+            <select name="traduccion" id="select-idiom">
+                <option value="Español-Ingles" id="E-I">Español-Ingles</option>
+                <option value="Ingles-Español" id="I-E">Ingles-Español</option>
+            </select>
+    </form>
+
+    <div class="traduction-area">
+        <div class="word">
+            <input type="text" id="words" placeholder="Escribe">
+        </div>
+        <div class="traduction">
+            <h3 class="result" id="result"></h3> 
+        </div>
+    </div>
+
+    <div class="cont-buttons">
+        <button id="traducciones">Tradución</button>
+        <button id="btn-diccionary">Diccionario</button>
+        <button>+ Palabra</button>
+
+    </div>
+
+    <div class="popup-window">
+    
+        <div class="dictionary">
+            <button id="close">X</button>
+            <h2>Diccionario</h2>
+            <h3>Seleccione el idioma</h3>
+        
+        
+            <form action="" id="form">
+                <label for="">Español</label>  
+                <input type="radio" name="idiom" class="radious" value="español">
+                
+                <label for="">Inglés</label>  
+                <input type="radio" name="idiom" class="radious" value="ingles">
+            </form>
+            
+    
+          <form action="" id="categories">
+            <button type="button" id="A-Z">A-Z</button>
+           <h2>CATEGORIAS</h2> 
+    
+            <label for="">Frutas</label>  
+          <input type="radio" name="categories" id="radious2" value="fruits">
+          
+          <label for="">Colores</label>  
+      
+              <input type="radio" name="categories"id="radious2" value="colors">
+              <label for="">Descripcion</label>  
+      
+              <input type="radio" name="categories"id="radious2" value="physical_descriptions">
+    
+    
+              <label for="">Animales</label>  
+      
+              <input type="radio" name="categories"id="radious2" value="animals">
+    
+              <label for="">Habilidades</label>  
+      
+              <input type="radio" name="categories"id="radious2" value="skills">
+      
+              <label for="">Verbos</label>  
+
+              <input type="radio" name="categories"id="radious2" value="verbs">
+      
+        </form>
+    
+            <div class="dictionary-results">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-window2">
+    
+        <div class="formulary">
+            <button id="close2">X</button>
+    
+            <h2>Agrega Palabra</h2> 
+            <label for="">Palabra en Español</label>
+            <input type="text" id="new-spanis">
+            <label for="">Palabra en Ingles</label>
+            <input type="text" id="new-english">
+            <label for="">Categoria</label>
+            <select name="" id="Category-form">
+                <option value="fruits">Frutas</option>
+                <option value="animals">Animales</option>
+                <option value="skills">Habilidades</option>
+                <option value="physical_descriptions">Descripciones</option>
+                <option value="colors">Colores</option>
+                <option value="verbs">Verbos</option>
+    
+            </select>
+            <button id="add-word">Agregar</button>
+        
+    
+        </div>    
+    </div>
+
+</main>
+<script src="app.js" type="module"></script>
+<script src="words.js" type="module"></script>
+</body>
+</html>
