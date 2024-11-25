@@ -85,9 +85,9 @@ const filterCategory = () => {
     if (category && idiom) {
         const fWord = dictionary.categories[category];
         if (fWord && fWord.length > 0) {
-            if (idiom === "palabra") {
+            if (idiom === "español") {
                 fWord.forEach(WordSpanish);
-            } else if (idiom === "traduccion") {
+            } else if (idiom === "ingles") {
                 fWord.forEach(WordEnglish);
             }
         } else {
