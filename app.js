@@ -4,6 +4,13 @@ const result = document.getElementById('result')
 const select = document.getElementById('select-idiom')
 const diccio = document.querySelector('.popup-window')
 const diccionaryResult = document.querySelector('.dictionary-results')
+const form = document.querySelector('.popup-window2')
+const newWordSpanish = document.getElementById('new-spanish')
+const newWordEnglish = document.getElementById('new-english')
+const newWordCategory = document.getElementById('Category-form')
+const addError = document.querySelector('.error')
+const addconfirmation = document.querySelector('.confirmation')
+
 
 
 const compressArray = () => {
@@ -18,13 +25,13 @@ const Traduction = () => {
             txtArea.value.toLowerCase() == element.english.toLowerCase()
         ) {
             if (select.value == "Español-Ingles") {
-                if (txtArea.value == element.spanish) {
+                if (txtArea.value.toLowerCase() == element.spanish.toLowerCase()) {
                     result.innerHTML = element.english;
                 } else {
                     result.innerHTML = "Escriba la palabra en el idioma indicado";
                 }
             } else if (select.value == "Ingles-Español") {
-                if (txtArea.value == element.english) {
+                if (txtArea.value.toLowerCase() == element.english.toLowerCase()) {
                     result.innerHTML = element.spanish;
                 } else {
                     result.innerHTML = "Escriba la palabra en el idioma indicado";
@@ -115,7 +122,72 @@ const styleDictionary = () => {
     }, 10);
 };
 
+const displayNoneForm= () => {
+    form.style.display = 'none';
+    setTimeout(() => {
+        form.style.opacity = 0;
+    });
+};
+
+const styleForm = () =>{
+    form.style.display = 'flex';
+    setTimeout(() => {
+        form.style.opacity = 1;
+    }, 10);
+}
+
+const newId = (category) => {
+    const onlyCategories = dictionary.categories[category];
+    const endWord = onlyCategories[onlyCategories.length - 1];
+    return endWord ? endWord.id + 1 : 1;
+};
+
+const AddWord = () => {
+    if (newWordSpanish.value.trim() === '' || newWordEnglish.value.trim() === '') {
+        addError.style.display = 'block';
+        setTimeout(() => {
+            addError.style.display = 'none';
+        }, 2000);
+    } else {
+        addconfirmation.style.display = 'block';
+        setTimeout(() => {
+            addconfirmation.style.display = 'none';
+        }, 2000);
+        
+        const newCategory = newWordCategory.value;
+        const valueId = newId(newCategory);
+        
+        const newWord = {
+            id: valueId,
+            english: newWordEnglish.value.toLowerCase(),
+            spanish: newWordSpanish.value.toLowerCase(),
+            example: example.value, 
+        };
+
+        dictionary.categories[newCategory].push(newWord);
+        console.log(dictionary);
+    }
+};
+
+
+function OrderList() {
+    const order = compressArray().sort((a, b) =>
+        a.spanish.localeCompare(b.spanish)
+    );
+    diccionaryResult.innerHTML = '';
+    order.forEach(elemento => {
+        const palabraElemento = document.createElement('h2');
+        palabraElemento.textContent = `${elemento.spanish} - ${elemento.english} - ${elemento.example}`;
+        diccionaryResult.appendChild(palabraElemento);
+    });
+}
+
+document.getElementById('A-Z').addEventListener('click', OrderList);
+
 document.getElementById('traducciones').addEventListener('click', Traduction)
 const btnDiccionary=document.getElementById('btn-diccionary').addEventListener('click',styleDictionary)
 const closeDiccionary= document.getElementById('close').addEventListener('click',displayNoneDictionary)
+const btnAddWord = document.getElementById('btn-Add-Word').addEventListener('click', styleForm)
+const closeform= document.getElementById('close2').addEventListener('click',displayNoneForm)
+const addNewWord = document.getElementById('add-word').addEventListener('click', AddWord)
 

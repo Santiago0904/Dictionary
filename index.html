@@ -28,7 +28,7 @@
     <div class="cont-buttons">
         <button id="traducciones">Tradución</button>
         <button id="btn-diccionary">Diccionario</button>
-        <button>+ Palabra</button>
+        <button id="btn-Add-Word">+ Palabra</button>
 
     </div>
 
@@ -91,9 +91,11 @@
     
             <h2>Agrega Palabra</h2> 
             <label for="">Palabra en Español</label>
-            <input type="text" id="new-spanis">
+            <input type="text" id="new-spanish">
             <label for="">Palabra en Ingles</label>
             <input type="text" id="new-english">
+            <label for="">Escriba el ejemplo</label>
+            <input type="text" id="example">
             <label for="">Categoria</label>
             <select name="" id="Category-form">
                 <option value="fruits">Frutas</option>
@@ -107,7 +109,11 @@
             <button id="add-word">Agregar</button>
         
     
-        </div>    
+        </div> 
+        
+        <div class="error">LLENE TODOS LOS CAMPOS</div>
+        <div class="confirmation">NUEVA PALABRA AGREGADA CON EXITO!</div>
+
     </div>
 
 </main>
